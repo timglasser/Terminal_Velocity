@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 54952338530384506}
   - component: {fileID: 114191479582204588}
   - component: {fileID: 114538148761632404}
+  - component: {fileID: 114744204698504414}
   m_Layer: 0
   m_Name: Prefab
   m_TagString: Untagged
@@ -391,9 +392,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180604}
-  m_LocalRotation: {x: -0, y: 0.91487193, z: -0, w: 0.40374434}
-  m_LocalPosition: {x: 897.76, y: 103.14, z: 845.28}
-  m_LocalScale: {x: 1.5382164, y: 1.5382164, z: 1.5382164}
+  m_LocalRotation: {x: -0, y: 0.8934952, z: -0, w: 0.44907278}
+  m_LocalPosition: {x: 915.9, y: 101.84, z: 826}
+  m_LocalScale: {x: 1.7074202, y: 1.7074202, z: 1.7074202}
   m_Children:
   - {fileID: 480606}
   - {fileID: 480592}
@@ -410,9 +411,10 @@ Transform:
   - {fileID: 4904739972273180}
   - {fileID: 4731749543225888}
   - {fileID: 4680552646871464}
+  - {fileID: 4940916221094698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 132.375, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 126.632, z: 0}
 --- !u!4 &480606
 Transform:
   m_ObjectHideFlags: 1
@@ -1088,6 +1090,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1710446297390374
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4485837288972612}
+  m_Layer: 0
+  m_Name: CameraFocusPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1721373150954412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4940916221094698}
+  m_Layer: 0
+  m_Name: Helpers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1799768388316334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,6 +1152,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1830169373124336
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4724428456460706}
+  m_Layer: 0
+  m_Name: WaypointTargetObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4485837288972612
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710446297390374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4940916221094698}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4651670879365592
 Transform:
   m_ObjectHideFlags: 1
@@ -1146,6 +1206,19 @@ Transform:
   - {fileID: 4845787426103920}
   m_Father: {fileID: 480604}
   m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4724428456460706
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1830169373124336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4940916221094698}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4731749543225888
 Transform:
@@ -1197,13 +1270,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829280575828686}
-  m_LocalRotation: {x: -0, y: 0.99707174, z: -0, w: 0.076471835}
-  m_LocalPosition: {x: -3.8747616, y: -0.60563815, z: -0.10305984}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.60563815, z: 0}
   m_LocalScale: {x: 1.0149418, y: 1.0149417, z: 1.0149418}
   m_Children: []
   m_Father: {fileID: 4680552646871464}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4850913989593070
 Transform:
   m_ObjectHideFlags: 1
@@ -1230,6 +1303,21 @@ Transform:
   m_Father: {fileID: 480604}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4940916221094698
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721373150954412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.91436154, y: 0.9143618, z: 0.91436154}
+  m_Children:
+  - {fileID: 4724428456460706}
+  - {fileID: 4485837288972612}
+  m_Father: {fileID: 480604}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &54952338530384506
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1237,7 +1325,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180604}
   serializedVersion: 2
-  m_Mass: 400
+  m_Mass: 1000
   m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1306,7 +1394,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1386,7 +1474,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1466,7 +1554,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1546,7 +1634,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1621,7 +1709,7 @@ MonoBehaviour:
   m_MaximumSteerAngle: 25
   m_SteerHelper: 1
   m_TractionControl: 1
-  m_FullTorqueOverAllWheels: 5000
+  m_FullTorqueOverAllWheels: 6000
   m_ReverseTorque: 500
   m_MaxHandbrakeTorque: 6
   m_Downforce: 100
@@ -1641,22 +1729,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963df58504b69045b8d0d746ba6f777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CautiousSpeedFactor: 0.05
-  m_CautiousMaxAngle: 50
-  m_CautiousMaxDistance: 100
-  m_CautiousAngularVelocityFactor: 30
-  m_SteerSensitivity: 0.05
-  m_AccelSensitivity: 0.04
-  m_BrakeSensitivity: 1
-  m_LateralWanderDistance: 3
-  m_LateralWanderSpeed: 0.1
-  m_AccelWanderAmount: 0.1
-  m_AccelWanderSpeed: 0.1
-  m_BrakeCondition: 2
+  m_CautiousSpeedFactor: 0.207
+  m_CautiousMaxAngle: 11
+  m_CautiousMaxDistance: 1.15
+  m_CautiousAngularVelocityFactor: 7.97
+  m_SteerSensitivity: 0.01
+  m_AccelSensitivity: 0.35
+  m_BrakeSensitivity: 2.1
+  m_LateralWanderDistance: 0.01
+  m_LateralWanderSpeed: 2
+  m_AccelWanderAmount: 0.113
+  m_AccelWanderSpeed: 1.08
+  m_BrakeCondition: 1
   m_Driving: 1
-  m_Target: {fileID: 0}
+  m_Target: {fileID: 4724428456460706}
   m_StopWhenTargetReached: 0
-  m_ReachTargetThreshold: 2
+  m_ReachTargetThreshold: 4
 --- !u!114 &114577005706919224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1670,6 +1758,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkidTrailPrefab: {fileID: 400000, guid: 4b6aa99de5d21424eab6ae279f31475b, type: 2}
   slipLimit: 5
+--- !u!114 &114744204698504414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 180604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b0fcfefbac75843823ba5ea5ce14a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circuit: {fileID: 0}
+  lookAheadForTargetOffset: 5
+  lookAheadForTargetFactor: 0.1
+  lookAheadForSpeedOffset: 10
+  lookAheadForSpeedFactor: 0.2
+  progressStyle: 0
+  pointToPointThreshold: 4
+  target: {fileID: 4724428456460706}
 --- !u!114 &114807356061025814
 MonoBehaviour:
   m_ObjectHideFlags: 1
