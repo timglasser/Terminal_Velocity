@@ -88,7 +88,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         private static BuildTargetGroup[] buildTargetGroups = new BuildTargetGroup[]
             {
                 BuildTargetGroup.Standalone,
-                BuildTargetGroup.WebPlayer,
+                BuildTargetGroup.WebGL,
                 BuildTargetGroup.Android,
                 BuildTargetGroup.iOS,
                 BuildTargetGroup.WP8,
@@ -105,10 +105,11 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
 				BuildTargetGroup.Tizen, 
 				BuildTargetGroup.WSA 
             };
-
+        
 
         private static void SetEnabled(string defineName, bool enable, bool mobile)
         {
+           
             //Debug.Log("setting "+defineName+" to "+enable);
             foreach (var group in mobile ? mobileBuildTargetGroups : buildTargetGroups)
             {

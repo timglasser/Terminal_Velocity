@@ -44,10 +44,14 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_AvoidOtherCarSlowdown;    // how much to slow down due to colliding with another car, whilst avoiding
         private float m_AvoidPathOffset;          // direction (-1 or 1) in which to offset path to avoid other car, whilst avoiding
         private Rigidbody m_Rigidbody;
-
+        private bool crashed;
+        private float crashedTime = 0.0f;
+        Vector3 RandomStopCheckPos;
+        float randomStopTime = 5.0f;
 
         private void Awake()
         {
+            RandomStopCheckPos = transform.position;
             // get the car controller reference
             m_CarController = GetComponent<CarController>();
 
@@ -56,10 +60,17 @@ namespace UnityStandardAssets.Vehicles.Car
 
             m_Rigidbody = GetComponent<Rigidbody>();
         }
-
+       
 
         private void FixedUpdate()
         {
+            randomStop();
+            if (crashed)
+            {
+                crashedTime -= Time.fixedDeltaTime;
+                if (crashedTime <= 0)
+                    crashed = false;
+            }
             if (m_Target == null || !m_Driving)
             {
                 // Car should not be moving,
@@ -75,6 +86,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
 
                 float desiredSpeed = m_CarController.MaxSpeed;
+                
 
                 // now it's time to decide if we should be slowing down...
                 switch (m_BrakeCondition)
@@ -121,7 +133,8 @@ namespace UnityStandardAssets.Vehicles.Car
                     case BrakeCondition.NeverBrake:
                         break;
                 }
-
+               CarController c = GetComponent<CarController>();
+             //   m_SteerSensitivity = 0.01f * ( c.CurrentSpeed/ c.MaxSpeed);
                 // Evasive action due to collision with other cars:
 
                 // our target position starts off as the 'real' target position
@@ -131,6 +144,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 if (Time.time < m_AvoidOtherCarTime)
                 {
                     // slow down if necessary (if we were behind the other car when collision occured)
+
                     desiredSpeed *= m_AvoidOtherCarSlowdown;
 
                     // and veer towards the side of our path-to-target that is away from the other car
@@ -151,7 +165,7 @@ namespace UnityStandardAssets.Vehicles.Car
                                                   : m_AccelSensitivity;
 
                 // decide the actual amount of accel/brake input to achieve desired speed.
-                float accel = Mathf.Clamp((desiredSpeed - m_CarController.CurrentSpeed)*accelBrakeSensitivity, -1, 1);
+                float accel = Mathf.Clamp((desiredSpeed * (crashed ? -1:1) - m_CarController.CurrentSpeed)*accelBrakeSensitivity, -1, 1);
 
                 // add acceleration 'wander', which also prevents AI from seeming too uniform and robotic in their driving
                 // i.e. increasing the accel wander amount can introduce jostling and bumps between AI cars in a race
@@ -162,7 +176,9 @@ namespace UnityStandardAssets.Vehicles.Car
                 Vector3 localTarget = transform.InverseTransformPoint(offsetTargetPos);
 
                 // work out the local angle towards the target
-                float targetAngle = Mathf.Atan2(localTarget.x, localTarget.z)*Mathf.Rad2Deg;
+                float targetAngle = Mathf.Atan2(localTarget.x*(crashed ? -1:1), localTarget.z * (crashed ? -1:1)
+                    )*Mathf.Rad2Deg;
+                targetAngle = Mathf.Abs(targetAngle) > 0.1 ? targetAngle : 0;
 
                 // get the amount of steering needed to aim the car towards the target
                 float steer = Mathf.Clamp(targetAngle*m_SteerSensitivity, -1, 1)*Mathf.Sign(m_CarController.CurrentSpeed);
@@ -208,6 +224,16 @@ namespace UnityStandardAssets.Vehicles.Car
                     float otherCarAngle = Mathf.Atan2(otherCarLocalDelta.x, otherCarLocalDelta.z);
                     m_AvoidPathOffset = m_LateralWanderDistance*-Mathf.Sign(otherCarAngle);
                 }
+               
+            }
+            else if (col.gameObject.tag == "SideWall")
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, Vector3.forward))
+                {
+                    crashed = true;
+                    crashedTime = 5.0f;
+                }
             }
         }
 
@@ -216,6 +242,33 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             m_Target = target;
             m_Driving = true;
+        }
+        public void randomStop()
+        {
+            randomStopTime -= Time.fixedDeltaTime;
+            if(randomStopTime <= 0)
+            {
+                if (Vector3.Distance(RandomStopCheckPos, transform.position) > 5)
+                {
+                    RandomStopCheckPos = transform.position;
+
+                }
+                else
+                {
+                    if (!crashed)
+                    setCrashed();
+                    else
+                    {
+                        crashed = false;
+                    }
+                }
+                randomStopTime = 5.0f;
+            }
+        }
+        public void setCrashed()
+        {
+            crashed = true;
+            crashedTime = 5.0f;
         }
     }
 }
