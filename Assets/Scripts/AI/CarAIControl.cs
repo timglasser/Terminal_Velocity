@@ -64,6 +64,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void FixedUpdate()
         {
+            Debug.DrawRay(transform.position + Vector3.up*2, transform.forward*3);
             randomStop();
             if (crashed)
             {
@@ -197,6 +198,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void OnCollisionStay(Collision col)
         {
+            RandomStopCheckPos = transform.position;
             // detect collision against other cars, so that we can take evasive action
             if (col.rigidbody != null)
             {
@@ -229,10 +231,20 @@ namespace UnityStandardAssets.Vehicles.Car
             else if (col.gameObject.tag == "SideWall")
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, Vector3.forward))
+                if (Physics.Raycast(transform.position, transform.forward*5, out hit))
                 {
-                    crashed = true;
-                    crashedTime = 5.0f;
+
+                    if (hit.collider.gameObject.tag == "SideWall")
+                    {
+                        crashed = true;
+                        crashedTime = 5.0f;
+                    }
+                    Debug.Log("hit front");
+                    Debug.DrawRay(transform.position, Vector3.forward);
+                }
+                else
+                {
+                    crashed = false;
                 }
             }
         }
@@ -246,7 +258,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public void randomStop()
         {
             randomStopTime -= Time.fixedDeltaTime;
-            if(randomStopTime <= 0)
+            if (randomStopTime <= 0)
             {
                 if (Vector3.Distance(RandomStopCheckPos, transform.position) > 5)
                 {
@@ -256,7 +268,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 else
                 {
                     if (!crashed)
-                    setCrashed();
+                        setCrashed();
                     else
                     {
                         crashed = false;
