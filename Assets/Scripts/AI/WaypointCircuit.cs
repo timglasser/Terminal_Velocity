@@ -128,6 +128,7 @@ public class WaypointCircuit : MonoBehaviour
         distances = new float[Waypoints.Length + 1];
 
         float accumulateDistance = 0;
+
         for (int i = 0; i < points.Length; ++i)
         {
             var t1 = Waypoints[(i) % Waypoints.Length];

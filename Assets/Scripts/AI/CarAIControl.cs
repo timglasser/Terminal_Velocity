@@ -44,10 +44,14 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_AvoidOtherCarSlowdown;    // how much to slow down due to colliding with another car, whilst avoiding
         private float m_AvoidPathOffset;          // direction (-1 or 1) in which to offset path to avoid other car, whilst avoiding
         private Rigidbody m_Rigidbody;
-
+        public bool crashed;
+        private float crashedTime = 0.0f;
+        Vector3 RandomStopCheckPos;
+        float randomStopTime = 5.0f;
 
         private void Awake()
         {
+            RandomStopCheckPos = transform.position;
             // get the car controller reference
             m_CarController = GetComponent<CarController>();
 
@@ -56,10 +60,56 @@ namespace UnityStandardAssets.Vehicles.Car
 
             m_Rigidbody = GetComponent<Rigidbody>();
         }
+       
 
 
         private void FixedUpdate()
         {
+            bool carinFront = false;
+            bool carLeft = false;
+            bool carRight = false;
+            Debug.DrawRay(transform.position, transform.forward*10);
+            RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward * -1), 10);
+            foreach (RaycastHit h in hit)
+            {
+                if (h.collider.gameObject.tag == "SideWall" || h.collider.gameObject.GetComponent<CarController>())
+                {
+                    crashed = false;
+                    //crashedTime = 5.0f;
+                    //Debug.Log(h.collider.gameObject.name + " " + h.point + ", " + h.distance);
+                    
+                }
+                
+                
+                Debug.DrawRay(transform.position + transform.up - transform.forward, transform.forward * -10);
+                //crashed = false;
+            }
+            //randomStop();
+            if (crashed)
+            {
+                hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward), 10);
+                foreach (RaycastHit h in hit)
+                {
+                    if (h.collider.gameObject.tag == "SideWall")
+                    {
+                        crashed = true;
+                        //crashedTime = 5.0f;
+                        //Debug.Log(h.collider.gameObject.name + " " + h.point + ", " + h.distance);
+                        break;
+                    }
+                    else
+                    {
+                        crashed = false;
+                    }
+
+                    Debug.DrawRay(transform.position + transform.up - transform.forward, transform.forward * -10);
+                    //crashed = false;
+                }
+                crashedTime -= Time.fixedDeltaTime;
+                if (crashedTime <= 0)
+                    crashed = false;
+            }
+            
             if (m_Target == null || !m_Driving)
             {
                 // Car should not be moving,
@@ -75,6 +125,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
 
                 float desiredSpeed = m_CarController.MaxSpeed;
+                
 
                 // now it's time to decide if we should be slowing down...
                 switch (m_BrakeCondition)
@@ -121,7 +172,8 @@ namespace UnityStandardAssets.Vehicles.Car
                     case BrakeCondition.NeverBrake:
                         break;
                 }
-
+               CarController c = GetComponent<CarController>();
+             //   m_SteerSensitivity = 0.01f * ( c.CurrentSpeed/ c.MaxSpeed);
                 // Evasive action due to collision with other cars:
 
                 // our target position starts off as the 'real' target position
@@ -131,6 +183,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 if (Time.time < m_AvoidOtherCarTime)
                 {
                     // slow down if necessary (if we were behind the other car when collision occured)
+
                     desiredSpeed *= m_AvoidOtherCarSlowdown;
 
                     // and veer towards the side of our path-to-target that is away from the other car
@@ -151,7 +204,8 @@ namespace UnityStandardAssets.Vehicles.Car
                                                   : m_AccelSensitivity;
 
                 // decide the actual amount of accel/brake input to achieve desired speed.
-                float accel = Mathf.Clamp((desiredSpeed - m_CarController.CurrentSpeed)*accelBrakeSensitivity, -1, 1);
+                //Debug.Log(crashed);
+                float accel = Mathf.Clamp((desiredSpeed * (crashed ? -1:1) - m_CarController.CurrentSpeed)*accelBrakeSensitivity, -1, 1);
 
                 // add acceleration 'wander', which also prevents AI from seeming too uniform and robotic in their driving
                 // i.e. increasing the accel wander amount can introduce jostling and bumps between AI cars in a race
@@ -162,7 +216,64 @@ namespace UnityStandardAssets.Vehicles.Car
                 Vector3 localTarget = transform.InverseTransformPoint(offsetTargetPos);
 
                 // work out the local angle towards the target
-                float targetAngle = Mathf.Atan2(localTarget.x, localTarget.z)*Mathf.Rad2Deg;
+                float targetAngle = Mathf.Atan2(localTarget.x * (crashed ? -1 : 1), localTarget.z * (crashed ? -1 : 1)
+                    ) * Mathf.Rad2Deg;
+                //float targetAngle = Mathf.Atan2(localTarget.x , localTarget.z 
+                //    ) * Mathf.Rad2Deg;
+                targetAngle = Mathf.Abs(targetAngle) > 0.1 ? targetAngle : 0;
+                //Debug.Log(targetAngle);
+                float originalAngle = targetAngle;
+                RaycastHit[] hitForward = Physics.RaycastAll(new Ray(transform.position + transform.up/2, transform.forward), 10);
+                RaycastHit[] hitLeft = Physics.RaycastAll(new Ray(transform.position + transform.up/2, transform.TransformDirection((2*Vector3.forward) + Vector3.left)), 10);
+                RaycastHit[] hitRight = Physics.RaycastAll(new Ray(transform.position + transform.up/2, transform.TransformDirection((2*Vector3.forward) + Vector3.right)), 10);
+                Debug.DrawRay(transform.position + transform.up/2, Vector3.Normalize(transform.TransformDirection((2*Vector3.forward) + Vector3.right)) * 10);
+                Debug.DrawRay(transform.position + transform.up/2, Vector3.Normalize(transform.TransformDirection((2 * Vector3.forward) + Vector3.left)) * 10);
+                float distancef = 1, distancel = 1, distancer = 1;
+                foreach(RaycastHit h in hitForward)
+                {
+                    if(h.collider.gameObject.GetComponentInParent<CarController>())
+                    {
+                        carinFront = true;
+                        distancef = h.distance;
+                        targetAngle += (targetAngle >= 0 ? 100 : -100) / distancef;
+                    }
+                    //Debug.Log(h.collider.gameObject);
+                    
+                }
+                foreach (RaycastHit h in hitLeft)
+                {
+                    if (h.collider.gameObject.GetComponentInParent<CarController>())
+                    {
+                        carLeft = true;
+                        distancel = h.distance;
+                        targetAngle += 50 / distancel;
+                    }
+                    if(h.collider.gameObject.tag == "SideWall")
+                    {
+                        carLeft = true;
+                        distancel = h.distance;
+                        targetAngle += 100 / distancel;
+                    }
+                    //Debug.Log(h.collider.gameObject);
+                }
+                foreach (RaycastHit h in hitRight)
+                {
+                    if (h.collider.gameObject.GetComponentInParent<CarController>())
+                    {
+                        carRight = true;
+                        distancer = h.distance;
+                        targetAngle += -50 / distancer;
+                    }
+                    if (h.collider.gameObject.tag == "SideWall")
+                    {
+                        carRight = true;
+                        distancer = h.distance;
+                        targetAngle += -100 / distancer;
+                    }
+                    //Debug.Log(h.collider.gameObject);
+                }
+                
+                //Debug.Log(originalAngle + " " + targetAngle);
 
                 // get the amount of steering needed to aim the car towards the target
                 float steer = Mathf.Clamp(targetAngle*m_SteerSensitivity, -1, 1)*Mathf.Sign(m_CarController.CurrentSpeed);
@@ -181,6 +292,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void OnCollisionStay(Collision col)
         {
+            RandomStopCheckPos = transform.position;
             // detect collision against other cars, so that we can take evasive action
             if (col.rigidbody != null)
             {
@@ -208,6 +320,20 @@ namespace UnityStandardAssets.Vehicles.Car
                     float otherCarAngle = Mathf.Atan2(otherCarLocalDelta.x, otherCarLocalDelta.z);
                     m_AvoidPathOffset = m_LateralWanderDistance*-Mathf.Sign(otherCarAngle);
                 }
+               
+            }
+            RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up, transform.forward * 10));
+            foreach (RaycastHit h in hit)
+            {
+                if (h.collider.gameObject.tag == "SideWall" )
+                {
+                    crashed = true;
+                    crashedTime = 5.0f;
+                    break;
+                }
+                //Debug.Log("hit front");
+                //Debug.DrawRay(transform.position, Vector3.forward);
+                crashed = false;
             }
         }
 
@@ -216,6 +342,40 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             m_Target = target;
             m_Driving = true;
+        }
+        public void randomStop()
+        {
+            randomStopTime -= Time.fixedDeltaTime;
+            if (randomStopTime <= 0)
+            {
+                if (Vector3.Distance(RandomStopCheckPos, transform.position) > 5)
+                {
+                    RandomStopCheckPos = transform.position;
+
+                }
+                else
+                {
+                    RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up, transform.forward * 10));
+                    foreach(RaycastHit h in hit)
+                    { 
+                        if (h.collider.gameObject.tag == "SideWall")
+                        {
+                            crashed = true;
+                            crashedTime = 5.0f;
+                            break;
+                        }
+                        //Debug.Log("hit front");
+                        //Debug.DrawRay(transform.position, Vector3.forward);
+                        crashed = false;
+                    }
+                }
+                randomStopTime = 5.0f;
+            }
+        }
+        public void setCrashed()
+        {
+            crashed = true;
+            crashedTime = 5.0f;
         }
     }
 }
