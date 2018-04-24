@@ -69,7 +69,7 @@ namespace UnityStandardAssets.Vehicles.Car
             bool carLeft = false;
             bool carRight = false;
             Debug.DrawRay(transform.position, transform.forward*10);
-            RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward * -1), 10);
+            RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward * -1), 3);
             foreach (RaycastHit h in hit)
             {
                 if (h.collider.gameObject.tag == "SideWall" || h.collider.gameObject.GetComponent<CarController>())
@@ -87,7 +87,7 @@ namespace UnityStandardAssets.Vehicles.Car
             //randomStop();
             if (crashed)
             {
-                hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward), 10);
+                hit = Physics.RaycastAll(new Ray(transform.position + transform.up - transform.forward, transform.forward), 5);
                 foreach (RaycastHit h in hit)
                 {
                     if (h.collider.gameObject.tag == "SideWall")
@@ -102,12 +102,12 @@ namespace UnityStandardAssets.Vehicles.Car
                         crashed = false;
                     }
 
-                    Debug.DrawRay(transform.position + transform.up - transform.forward, transform.forward * -10);
+                    Debug.DrawRay(transform.position + transform.up - transform.forward, transform.forward * -3);
                     //crashed = false;
                 }
-                crashedTime -= Time.fixedDeltaTime;
-                if (crashedTime <= 0)
-                    crashed = false;
+                //crashedTime -= Time.fixedDeltaTime;
+                //if (crashedTime <= 0)
+                //    crashed = false;
             }
             
             if (m_Target == null || !m_Driving)
@@ -246,13 +246,13 @@ namespace UnityStandardAssets.Vehicles.Car
                     {
                         carLeft = true;
                         distancel = h.distance;
-                        targetAngle += 50 / distancel;
+                        targetAngle += 25 / distancel;
                     }
-                    if(h.collider.gameObject.tag == "SideWall")
+                    if (h.collider.gameObject.tag == "SideWall")
                     {
                         carLeft = true;
                         distancel = h.distance;
-                        targetAngle += 100 / distancel;
+                        targetAngle += 50 / distancel;
                     }
                     //Debug.Log(h.collider.gameObject);
                 }
@@ -262,13 +262,13 @@ namespace UnityStandardAssets.Vehicles.Car
                     {
                         carRight = true;
                         distancer = h.distance;
-                        targetAngle += -50 / distancer;
+                        targetAngle += -25 / distancer;
                     }
                     if (h.collider.gameObject.tag == "SideWall")
                     {
                         carRight = true;
                         distancer = h.distance;
-                        targetAngle += -100 / distancer;
+                        targetAngle += -50 / distancer;
                     }
                     //Debug.Log(h.collider.gameObject);
                 }
@@ -322,19 +322,19 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
                
             }
-            RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up, transform.forward * 10));
-            foreach (RaycastHit h in hit)
-            {
-                if (h.collider.gameObject.tag == "SideWall" )
-                {
-                    crashed = true;
-                    crashedTime = 5.0f;
-                    break;
-                }
-                //Debug.Log("hit front");
-                //Debug.DrawRay(transform.position, Vector3.forward);
-                crashed = false;
-            }
+            //RaycastHit[] hit = Physics.RaycastAll(new Ray(transform.position + transform.up, transform.forward * 10));
+            //foreach (RaycastHit h in hit)
+            //{
+            //    if (h.collider.gameObject.tag == "SideWall" )
+            //    {
+            //        crashed = true;
+            //        crashedTime = 5.0f;
+            //        break;
+            //    }
+            //    //Debug.Log("hit front");
+            //    //Debug.DrawRay(transform.position, Vector3.forward);
+            //    crashed = false;
+            //}
         }
 
 
