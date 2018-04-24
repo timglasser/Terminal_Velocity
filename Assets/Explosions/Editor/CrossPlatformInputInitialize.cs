@@ -88,11 +88,11 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         private static BuildTargetGroup[] buildTargetGroups = new BuildTargetGroup[]
             {
                 BuildTargetGroup.Standalone,
-<<<<<<< HEAD
+//<<<<<<< HEAD
                 //BuildTargetGroup.WebPlayer,
-=======
+//=======
                 BuildTargetGroup.WebGL,
->>>>>>> b5a277f4c5b99ee413336afe609bd22bde387b0a
+//>>>>>>> b5a277f4c5b99ee413336afe609bd22bde387b0a
                 BuildTargetGroup.Android,
                 BuildTargetGroup.iOS,
                 BuildTargetGroup.WP8,
