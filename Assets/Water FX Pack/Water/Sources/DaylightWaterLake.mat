@@ -54,12 +54,12 @@ Material:
     - _FresnelPower: 0.75
     - _ReflDistort: 1.5
     - _RefrDistort: 0.4
-    - _Shininess: 0.7
+    - _Shininess: 0.052
     - _WaveScale: 0.02
     m_Colors:
     - WaveSpeed: {r: 19, g: 9, b: -16, a: -7}
     - _BumpMap_ST: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.04411763, g: 0.041522473, b: 0.041522473, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _Fresnel_ST: {r: 1, g: 1, b: 0, a: 0}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - SideWall
+  - Rain
+  - Tunnel
+  - Oil Slick
   layers:
   - Default
   - TransparentFX
