@@ -12,7 +12,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public bool skidding { get; private set; }
         public bool PlayingAudio { get; private set; }
         public float slipLimit = 5;
-        private CarAudio m_CarAudio;
+        private AudioSource m_WheelAudio;
 
         private Transform m_SkidTrail;
         private WheelCollider m_WheelCollider;
@@ -42,7 +42,7 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             // hubs is the parent, car is the grandparent
 
-            m_CarAudio = GetComponentInParent<Transform>().GetComponentInParent<CarAudio>();
+            m_WheelAudio = GetComponent<AudioSource>();
         }
 
 
@@ -52,7 +52,7 @@ namespace UnityStandardAssets.Vehicles.Car
             skidParticles.Emit(1);
             if (!skidding)
             {
-                m_CarAudio.m_Skid.volume = 30;
+                PlayAudio();
                 StartCoroutine(StartSkidTrail());
             }
         }
@@ -60,14 +60,14 @@ namespace UnityStandardAssets.Vehicles.Car
         public void PlayAudio()
         {
 
-            m_CarAudio.m_Skid.Play();
+            m_WheelAudio.Play();
             PlayingAudio = true;
         }
 
 
         public void StopAudio()
         {
-            m_CarAudio.m_Skid.Stop();
+            m_WheelAudio.Stop();
             PlayingAudio = false;
         }
 

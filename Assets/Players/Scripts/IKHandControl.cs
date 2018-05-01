@@ -5,14 +5,17 @@ public class IKHandControl : MonoBehaviour {
 
 
     protected Animator animator;
-    public GameObject targetA = null;
-    public GameObject leftHandle = null;
-    public GameObject rightHandle = null;
-  //  public GameObject weapon = null;
+    public Transform targetA = null;
+    public Transform leftHandle = null;
+    public Transform rightHandle = null;
 
-    private bool load = false;
+    public float lookIKWeight = 1.0f;
+    public float bodyWeight = 1.0f;
+    public float headWeight = 1.0f;
+    public float eyesWeight = 1.0f;
+    public float clampWeight = 1.0f;
 
- 
+    float aimIKWeight = 1.0f;
 
     // Use this for initialization
     void Start()
@@ -20,12 +23,29 @@ public class IKHandControl : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    void SetAimIK()
+    {
+        Vector3 pos = targetA.position;
+        animator.SetLookAtPosition(pos);
+        BlendAimIK(1.0f);
+    }
+
+    void BlendAimIK(float targetWeight)
+    {
+
+        if (Mathf.Approximately(targetWeight, aimIKWeight))
+        {
+            aimIKWeight = targetWeight;
+        }
+        else aimIKWeight = Mathf.Lerp(aimIKWeight, targetWeight, Time.deltaTime * 10.0f);
+
+        //Body Head Eye Weight
+        animator.SetLookAtWeight(aimIKWeight, bodyWeight, headWeight, eyesWeight, clampWeight);
+    }
 
     void OnAnimatorIK(int layerIndex)
     {
-        float aim = 0.5f;// animator.GetFloat("Aim");
-
-        // solve lookat and update bazooka transform on first il layer
+        // solve first ik layer
         if (layerIndex == 0)
         {
             if (targetA != null)
@@ -35,25 +55,13 @@ public class IKHandControl : MonoBehaviour {
                 target.y = target.y + 0.2f * (target - animator.rootPosition).magnitude;
 
                 animator.SetLookAtPosition(target);
-                animator.SetLookAtWeight(aim, 0.5f, 0.5f, 0.0f, 0.5f);
-/*
-                if (weapon != null)
-                {
-                    float fire = animator.GetFloat("Fire");
-                    Vector3 pos = new Vector3(0.195f, -0.0557f, -0.155f);
-                    Vector3 scale = new Vector3(0.2f, 0.8f, 0.2f);
-                    pos.x -= fire * 0.2f;
-                  //  scale = scale * aim;
-                   // weapon.transform.localScale = scale;
-                    weapon.transform.localPosition = pos;
-                }
- */
+                animator.SetLookAtWeight(aimIKWeight, bodyWeight, headWeight, eyesWeight, clampWeight);
 
             }
         }
 
         // solve hands holding on second ik layer
-        if (layerIndex == 1)
+        if (layerIndex == 0)
         {
             if (leftHandle != null)
             {

@@ -7,7 +7,6 @@ using UnityEditor;
 
 public class WaypointCircuit : MonoBehaviour
 {
-
     public WaypointList waypointList = new WaypointList();
     [SerializeField]
     bool smoothRoute = true;
@@ -105,11 +104,8 @@ public class WaypointCircuit : MonoBehaviour
             p2n = point;
 
             return Vector3.Lerp(points[p1n], points[p2n], i);
-
         }
-
     }
-
 
 
     Vector3 CatmullRom(Vector3 _P0, Vector3 _P1, Vector3 _P2, Vector3 _P3, float _i)
@@ -207,10 +203,7 @@ public class WaypointCircuit : MonoBehaviour
             this.position = position;
             this.direction = direction;
         }
-
     }
-
-
 }
 
 

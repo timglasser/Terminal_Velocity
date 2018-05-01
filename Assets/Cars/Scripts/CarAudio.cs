@@ -30,35 +30,35 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
         public EngineAudioOptions engineSoundStyle = EngineAudioOptions.FourChannel;// Set the default audio options to be four channel
-        public AudioClip lowAccelClip;                                              // Audio clip for low acceleration
-        public AudioClip lowDecelClip;                                              // Audio clip for low deceleration
-        public AudioClip highAccelClip;                                             // Audio clip for high acceleration
-        public AudioClip highDecelClip;                                             // Audio clip for high deceleration
+  //      public AudioClip lowAccelClip;                                              // Audio clip for low acceleration
+  //      public AudioClip lowDecelClip;                                              // Audio clip for low deceleration
+  //      public AudioClip highAccelClip;                                             // Audio clip for high acceleration
+  //      public AudioClip highDecelClip;                                             // Audio clip for high deceleration
 
         public float pitchMultiplier = 1f;                                          // Used for altering the pitch of audio clips
         public float lowPitchMin = 1f;                                              // The lowest possible pitch for the low sounds
         public float lowPitchMax = 6f;                                              // The highest possible pitch for the low sounds
         public float highPitchMultiplier = 0.25f;                                   // Used for altering the pitch of high sounds
-        public float maxRolloffDistance = 500;                                      // The maximum distance where rollof starts to take place
+        public float maxRolloffDistance = 100;                                      // The maximum distance where rollof starts to take place
         public float dopplerLevel = 1;                                              // The mount of doppler effect used in the audio
         public bool useDoppler = true;                                              // Toggle for using doppler
 
-        public AudioClip crashLowSpeedSound = null;
+    //    public AudioClip crashLowSpeedSound = null;
         public float crashLowVolume = 1.0f;
-        public AudioClip crashHighSpeedSound = null;
+     //   public AudioClip crashHighSpeedSound = null;
         public float crashHighVolume = 1.0f;
-        public AudioClip skidSound = null;
-        public AudioClip BackgroundMusic = null;
-        public float BackgroundMusicVolume = 0.6f;
+   //     public AudioClip skidSound = null;
+  //      public AudioClip BackgroundMusic = null;
+  //      public float BackgroundMusicVolume = 0.6f;
 
-        private AudioSource m_LowAccel; // Source for the low acceleration sounds
-        private AudioSource m_LowDecel; // Source for the low deceleration sounds
-        private AudioSource m_HighAccel; // Source for the high acceleration sounds
-        private AudioSource m_HighDecel; // Source for the high deceleration sounds
-        private AudioSource m_CrashHigh;
-        private AudioSource m_CrashLow;
-        public AudioSource m_Skid;
-        private AudioSource m_BackgroundMusic;
+        public AudioSource m_LowAccel; // Source for the low acceleration sounds
+        public AudioSource m_LowDecel; // Source for the low deceleration sounds
+        public AudioSource m_HighAccel; // Source for the high acceleration sounds
+        public AudioSource m_HighDecel; // Source for the high deceleration sounds
+        public AudioSource m_CrashHigh;
+        public AudioSource m_CrashLow;
+       // public AudioSource m_Skid;
+        public AudioSource m_BackgroundMusic;
 
         private bool m_StartedSound; // flag for knowing if we have started sounds
 
@@ -69,47 +69,57 @@ namespace UnityStandardAssets.Vehicles.Car
         private float crashTime = 0.2f;
         private int oneShotLimit = 8;
 
-        private void StartSound()
+        void Start()
         {
             // get the carcontroller ( this will not be null as we have require component)
             m_CarController = GetComponent<CarController>();
 
             // setup the simple audio source
-            m_HighAccel = SetUpEngineAudioSource(highAccelClip);
+            SetUpEngineAudioSource(m_HighAccel);
 
             // if we have four channel audio setup the four audio sources
             if (engineSoundStyle == EngineAudioOptions.FourChannel)
             {
-                m_LowAccel = SetUpEngineAudioSource(lowAccelClip);
-                m_LowDecel = SetUpEngineAudioSource(lowDecelClip);
-                m_HighDecel = SetUpEngineAudioSource(highDecelClip);
+                SetUpEngineAudioSource(m_LowAccel);
+                SetUpEngineAudioSource(m_LowDecel);
+                SetUpEngineAudioSource(m_HighDecel);
             }
 
             // skid clip setup
-            m_Skid = SetUpEngineAudioSource(skidSound);
+        //    m_Skid = SetUpEngineAudioSource(skidSound);
 
             // crash clip setup
-            m_CrashHigh = SetUpEngineAudioSource(crashHighSpeedSound);
-            m_CrashLow = SetUpEngineAudioSource(crashLowSpeedSound);
-            crashTime = Mathf.Max(crashLowSpeedSound.length, crashHighSpeedSound.length);
+            m_CrashHigh = SetUpEngineAudioSource(m_CrashHigh);
+            m_CrashLow = SetUpEngineAudioSource(m_CrashHigh);
          
-
+/*
             // music setup
             //      m_BackgroundMusic = SetUpEngineAudioSource(BackgroundMusic);
-
+*/
+            crashTime = Mathf.Max(m_CrashLow.clip.length, m_CrashHigh.clip.length);
 
             // flag that we have started the sounds playing
             m_StartedSound = true;
         }
 
+        private void StartSound()
+        {
+            //Stop all audio sources on this object:
+            foreach (var source in GetComponents<AudioSource>())
+            {
+                source.Play();
+            }
+
+            m_StartedSound = true;
+        }
 
         private void StopSound()
         {
-            //Destroy all audio sources on this object:
+          //Stop all audio sources on this object:
             foreach (var source in GetComponents<AudioSource>())
             {
-                Destroy(source);
-            }
+                source.Stop();
+           }
 
             m_StartedSound = false;
         }
@@ -132,7 +142,7 @@ namespace UnityStandardAssets.Vehicles.Car
             {
                 StartSound();
             }
-
+            
             if (m_StartedSound)
             {
                 // The pitch is interpolated between the min and max values, according to the car's revs.
@@ -189,23 +199,24 @@ namespace UnityStandardAssets.Vehicles.Car
 
 
         // sets up and adds new audio source to the gane object
-        private AudioSource SetUpEngineAudioSource(AudioClip clip)
+        private AudioSource SetUpEngineAudioSource(AudioSource source)
         {
             // create the new audio source component on the game object and set up its properties
-            AudioSource source = gameObject.AddComponent<AudioSource>();
-            source.clip = clip;
-            source.volume = 0;
+          //  AudioSource source = gameObject.AddComponent<AudioSource>();
+            //source.clip = clip;
+            source.volume = 1;
             source.loop = true;
 
             // start the clip from a random point
-            source.time = Random.Range(0f, clip.length);
+            source.time = Random.Range(0f, source.clip.length);
             source.Play();
             source.minDistance = 5;
             source.maxDistance = maxRolloffDistance;
             source.dopplerLevel = 0;
+       //     source.rolloffMode = rolloffMode.LogarithmicRolloff;
             return source;
         }
-
+        
 
         // unclamped versions of Lerp and Inverse Lerp, to allow value to exceed the from-to range
         private static float ULerp(float from, float to, float value)
@@ -236,13 +247,13 @@ namespace UnityStandardAssets.Vehicles.Car
             {
                 m_CrashHigh.Stop();
                 m_CrashHigh.volume = Mathf.Clamp01((0.5f + volumeFactor * 0.5f) * crashHighVolume);
-                m_CrashHigh.PlayOneShot(crashHighSpeedSound, Mathf.Clamp01((0.5f + volumeFactor * 0.5f) * crashHighVolume));
+                m_CrashHigh.PlayOneShot(m_CrashHigh.clip, Mathf.Clamp01((0.5f + volumeFactor * 0.5f) * crashHighVolume));
             }
             else
             {
                 m_CrashLow.Stop();
                 m_CrashLow.volume = Mathf.Clamp01((0.5f + volumeFactor * 0.5f) * crashHighVolume);
-                m_CrashLow.PlayOneShot(crashLowSpeedSound, Mathf.Clamp01(volumeFactor * crashLowVolume));
+                m_CrashLow.PlayOneShot(m_CrashLow.clip, Mathf.Clamp01(volumeFactor * crashLowVolume));
             }
           
             crashesStarted++;

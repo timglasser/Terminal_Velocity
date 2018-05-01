@@ -62,8 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad478628c2548e4cafe03a01031ff3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArriveRadius: 3.5
-  SlowdownRadius: 5
 --- !u!114 &114512664584216028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,8 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e26a0451a41afc4ca1fc5e93852482b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArriveRadius: 2
-  SlowdownRadius: 3
 --- !u!1101 &1101182024296879660
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -407,7 +403,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 216, y: 108, z: 0}
+  m_AnyStatePosition: {x: 216, y: 132, z: 0}
   m_EntryPosition: {x: -48, y: -96, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

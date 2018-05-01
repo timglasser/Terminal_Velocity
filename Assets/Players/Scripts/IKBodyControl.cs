@@ -6,12 +6,13 @@ public class IKBodyControl : MonoBehaviour {
     Animator anim;
     public float ikWeight;
 
-   // public Transform leftHandIKTarget;
-   // public Transform rightHandIKTarget;
+ //   public Transform headTarget;
+//    public Transform bodyTarget;
+//    public Transform positionTarget;
 
     public Transform hintLeft;
     public Transform hintRight;
-    public GameObject target;
+  //  public Transform target;
 
     Vector3 lFpos;
     Vector3 rFpos;
@@ -19,23 +20,15 @@ public class IKBodyControl : MonoBehaviour {
 
     float lFweight, rFweight;
 
-    Transform leftFoot, rightFoot;
+    private Transform leftFoot, rightFoot;
 
     public float offsetY;
+    public Transform LFootTarg, RFootTarg;
 
-    public float lookIKWeight;
-    public float bodyWeight;
-    public float headWeight;
-    public float eyesWeight;
-    public float clampWeight;
 
-    public Transform lhIKTarget, rhIKTarget;
 
-    Vector3 rightHandPos;
-    float rightHandWeight;
-
-    public Transform pointer;
-    public Transform lookPos;
+//    public Transform pointer;
+ //   public Transform lookPos;
 
     // Use this for initialization
     void Start () {
@@ -44,36 +37,36 @@ public class IKBodyControl : MonoBehaviour {
         leftFoot = anim.GetBoneTransform(HumanBodyBones.LeftFoot);
         rightFoot = anim.GetBoneTransform(HumanBodyBones.RightFoot);
 
-        lFrot = leftFoot.rotation;
-        rFrot = rightFoot.rotation;
+    //    lFrot = leftFoot.rotation;
+    //    rFrot = rightFoot.rotation;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        /*
+        
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 15);
 
-        lookPos.position = ray.GetPoint(15);
-        */
-        /*
-        code for raising right hand
+    //    lookPos.position = ray.GetPoint(15);
+        
+        
+      //  code for raising right hand
         RaycastHit rightHand;
-        if (Physics.Raycast(pointer.position , pointer.right, out rightHand, 1))
-        {
+      //  if (Physics.Raycast(pointer.position , pointer.right, out rightHand, 1))
+    //    {
             anim.SetBool("Raise", true);
-        }
-        else
-        {
+  //      }
+  //      else
+  //      {
             anim.SetBool("Raise", false);
-        }
-        */
+  //      }
+       
         RaycastHit leftHit;
         RaycastHit rightHit;
 
-        Vector3 lpos = leftFoot.TransformPoint(Vector3.zero);
-        Vector3 rpos = rightFoot.TransformPoint(Vector3.zero);
-
+        Vector3 lpos = leftFoot.position;//TransformPoint(Vector3.zero);
+        Vector3 rpos = rightFoot.position;// TransformPoint(Vector3.zero);
+/*
         if (Physics.Raycast(lpos, -Vector3.up, out leftHit, 1))
         {
             lFpos = leftHit.point;
@@ -85,38 +78,37 @@ public class IKBodyControl : MonoBehaviour {
             rFpos = rightHit.point;
             rFrot = Quaternion.FromToRotation(transform.up, rightHit.normal) * transform.rotation;
         }
+  */      
     }
 
     void OnAnimatorIK()
     {
-        anim.SetLookAtWeight(lookIKWeight, bodyWeight, headWeight, eyesWeight, clampWeight);
-        anim.SetLookAtPosition(lookPos.position);
 
 
-        lFweight = anim.GetFloat("LeftFoot");
-        rFweight = anim.GetFloat("RightFoot");
+        lFweight = 1.0f;// anim.GetFloat("LeftFoot");
+        rFweight = 1.0f;// anim.GetFloat("RightFoot");
+        // Leg hints
+        anim.SetIKHintPositionWeight(AvatarIKHint.LeftKnee, ikWeight);
+        anim.SetIKHintPositionWeight(AvatarIKHint.RightKnee, ikWeight);
 
+        anim.SetIKHintPosition(AvatarIKHint.LeftKnee, anim.GetBoneTransform(HumanBodyBones.LeftUpperLeg).position);
+        anim.SetIKHintPosition(AvatarIKHint.RightKnee, anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).position);
         // positions
 
         anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, lFweight);
         anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, rFweight);
 
-        anim.SetIKPosition(AvatarIKGoal.LeftFoot, lFpos + new Vector3(0.0f, offsetY,0.0f));
-        anim.SetIKPosition(AvatarIKGoal.RightFoot, rFpos + new Vector3(0.0f, offsetY, 0.0f));
+        anim.SetIKPosition(AvatarIKGoal.LeftFoot, LFootTarg.position + new Vector3(0.0f, offsetY,0.0f));
+        anim.SetIKPosition(AvatarIKGoal.RightFoot, RFootTarg.position + new Vector3(0.0f, offsetY, 0.0f));
 
-        // Leg hints
-        anim.SetIKHintPositionWeight(AvatarIKHint.LeftKnee, ikWeight);
-        anim.SetIKHintPositionWeight(AvatarIKHint.RightKnee, ikWeight);
 
-        anim.SetIKHintPosition(AvatarIKHint.LeftKnee, hintLeft.position);
-        anim.SetIKHintPosition(AvatarIKHint.RightKnee, hintRight.position);
 
         // rotations
         anim.SetIKRotationWeight(AvatarIKGoal.LeftFoot, lFweight);
         anim.SetIKRotationWeight(AvatarIKGoal.RightFoot, rFweight);
 
-        anim.SetIKRotation(AvatarIKGoal.LeftFoot, lFrot);
-        anim.SetIKRotation(AvatarIKGoal.RightFoot, rFrot);
+        anim.SetIKRotation(AvatarIKGoal.LeftFoot, LFootTarg.rotation);
+        anim.SetIKRotation(AvatarIKGoal.RightFoot, RFootTarg.rotation);
 
         /* Hand Inverse Kinematics
 
