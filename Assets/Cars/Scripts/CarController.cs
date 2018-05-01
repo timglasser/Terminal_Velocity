@@ -41,11 +41,16 @@ namespace UnityStandardAssets.Vehicles.Car
         private Vector3 m_Prevpos, m_Pos;
         private float m_SteerAngle;
         private int m_GearNum;
+        private float currTime = 0f;
+        private float trigTime = 1f;
+        private bool helperDisabled = false;
+        private bool oilHit = false;
         private float m_GearFactor;
         private float m_OldRotation;
         private float m_CurrentTorque;
         private Rigidbody m_Rigidbody;
         private const float k_ReversingThreshold = 0.01f;
+        
 
         public bool Skidding { get; private set; }
         public float BrakeInput { get; private set; }
@@ -54,10 +59,12 @@ namespace UnityStandardAssets.Vehicles.Car
         public float MaxSpeed{get { return m_Topspeed; }}
         public float Revs { get; private set; }
         public float AccelInput { get; private set; }
+      
 
         // Use this for initialization
         private void Start()
         {
+            
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
             {
@@ -365,6 +372,54 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
             }
             return false;
+        }
+
+        private void Update()
+        {
+            currTime += Time.deltaTime;
+
+            if(oilHit == true && helperDisabled == false)
+            {
+                currTime = 0;
+                disableHelper();
+                oilHit = false;
+            }
+            if(currTime >= trigTime && helperDisabled == true)
+            {
+                enableHelper();
+            }
+            
+        }
+
+        public void OnCollisionEnter(Collision col)
+        {
+            Debug.Log(col.gameObject.tag);
+            if (col.gameObject.tag == "Oil Slick")
+            {
+                oilHit = true;
+            }
+        }
+
+        public void OnTriggerEnter(Collider obj)
+        {
+            Debug.Log(obj.tag);
+            if (obj.gameObject.tag == "Oil Slick")
+            {
+                oilHit = true;
+            }
+        }
+
+
+        private void disableHelper()
+        {
+            m_SteerHelper = 0;
+            helperDisabled = true;
+        }
+
+        private void enableHelper()
+        {
+            m_SteerHelper = 0.644f;
+            helperDisabled = false;
         }
     }
 }
