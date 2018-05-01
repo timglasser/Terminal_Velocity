@@ -17,7 +17,7 @@ public class Speedometer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		MPH = vehicle.velocity.magnitude * 2.237f;
-		speedometer.text = "Name: RYDER";
+		speedometer.text = "Night Ryder";
 
 		transform.Find("SpeedometerNeedle").localEulerAngles = new Vector3(0f, 0f, Mathf.Round(-MPH * 100f / 100f) );
 	}
