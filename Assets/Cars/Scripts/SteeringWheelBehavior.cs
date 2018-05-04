@@ -10,11 +10,11 @@ namespace UnityStandardAssets.Vehicles.Car
 
     public class SteeringWheelBehavior : MonoBehaviour
     {
-        public float turnSpeed;
-        float maxAngle = (100);
-        public CarController mycar; 
+
+        public CarController mycar;
+        public float sensitivity=1.5f;
    
-        public GameObject SteeringWheel;
+     //   public GameObject SteeringWheel;
 
 
         // Use this for initialization
@@ -31,18 +31,21 @@ namespace UnityStandardAssets.Vehicles.Car
             float angle = mycar.CurrentSteerAngle;
              
           // // if (Input.GetKey(KeyCode.LeftArrow))
-            {
+        //    {
 
-                SteeringWheel.transform.Rotate(-Vector3.forward * Time.deltaTime * angle * turnSpeed);
+                // SteeringWheel.transform.Rotate(-Vector3.forward * Time.deltaTime * angle * turnSpeed);
+                Quaternion rot = Quaternion.Euler(0.0f,0.0f, -angle*sensitivity);
+                transform.localRotation= rot;
 
-            }
-
-       //     if (Input.GetKey(KeyCode.RightArrow))
-       //     {
-
-        //        SteeringWheel.transform.Rotate(-Vector3.forward * Time.deltaTime * turnSpeed);
 
          //   }
+
+            //     if (Input.GetKey(KeyCode.RightArrow))
+            //     {
+
+            //        SteeringWheel.transform.Rotate(-Vector3.forward * Time.deltaTime * turnSpeed);
+
+            //   }
 
         }
         public void Move(float steering, float accel, float footbrake, float handbrake)

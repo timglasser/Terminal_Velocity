@@ -2134,6 +2134,7 @@ MonoBehaviour:
   m_Target: {fileID: 4351751195666766}
   m_StopWhenTargetReached: 0
   m_ReachTargetThreshold: 4
+  crashed: 0
 --- !u!114 &114622450016643716
 MonoBehaviour:
   m_ObjectHideFlags: 1

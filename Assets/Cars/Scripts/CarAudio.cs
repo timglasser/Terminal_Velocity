@@ -30,11 +30,7 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
         public EngineAudioOptions engineSoundStyle = EngineAudioOptions.FourChannel;// Set the default audio options to be four channel
-  //      public AudioClip lowAccelClip;                                              // Audio clip for low acceleration
-  //      public AudioClip lowDecelClip;                                              // Audio clip for low deceleration
-  //      public AudioClip highAccelClip;                                             // Audio clip for high acceleration
-  //      public AudioClip highDecelClip;                                             // Audio clip for high deceleration
-
+  
         public float pitchMultiplier = 1f;                                          // Used for altering the pitch of audio clips
         public float lowPitchMin = 1f;                                              // The lowest possible pitch for the low sounds
         public float lowPitchMax = 6f;                                              // The highest possible pitch for the low sounds
@@ -43,21 +39,15 @@ namespace UnityStandardAssets.Vehicles.Car
         public float dopplerLevel = 1;                                              // The mount of doppler effect used in the audio
         public bool useDoppler = true;                                              // Toggle for using doppler
 
-    //    public AudioClip crashLowSpeedSound = null;
         public float crashLowVolume = 1.0f;
-     //   public AudioClip crashHighSpeedSound = null;
         public float crashHighVolume = 1.0f;
-   //     public AudioClip skidSound = null;
-  //      public AudioClip BackgroundMusic = null;
-  //      public float BackgroundMusicVolume = 0.6f;
-
+  
         public AudioSource m_LowAccel; // Source for the low acceleration sounds
         public AudioSource m_LowDecel; // Source for the low deceleration sounds
         public AudioSource m_HighAccel; // Source for the high acceleration sounds
         public AudioSource m_HighDecel; // Source for the high deceleration sounds
         public AudioSource m_CrashHigh;
         public AudioSource m_CrashLow;
-       // public AudioSource m_Skid;
         public AudioSource m_BackgroundMusic;
 
         private bool m_StartedSound; // flag for knowing if we have started sounds
@@ -76,13 +66,17 @@ namespace UnityStandardAssets.Vehicles.Car
 
             // setup the simple audio source
             SetUpEngineAudioSource(m_HighAccel);
+            m_HighAccel.Play();
 
             // if we have four channel audio setup the four audio sources
             if (engineSoundStyle == EngineAudioOptions.FourChannel)
             {
                 SetUpEngineAudioSource(m_LowAccel);
+                m_LowAccel.Play();
                 SetUpEngineAudioSource(m_LowDecel);
+                m_LowDecel.Play();
                 SetUpEngineAudioSource(m_HighDecel);
+                m_HighDecel.Play();
             }
 
             // skid clip setup
@@ -209,7 +203,6 @@ namespace UnityStandardAssets.Vehicles.Car
 
             // start the clip from a random point
             source.time = Random.Range(0f, source.clip.length);
-            source.Play();
             source.minDistance = 5;
             source.maxDistance = maxRolloffDistance;
             source.dopplerLevel = 0;
