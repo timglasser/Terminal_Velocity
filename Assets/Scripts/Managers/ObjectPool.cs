@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 //Erics Version 5-1-2018
@@ -119,6 +120,26 @@ public class ObjectPool : MonoBehaviour {
         }
     }
 
+    // The new interface method for destroy
+    public static void Destroy(GameObject objectToDestroy, float waitTime)
+    {
+        // this runs a coroutine with an IEnumerator interface ( i.e.in parallel) See below
+        // this is an example of a Delegate design pattern.
+        Instance.StartCoroutine(Instance.Wait(waitTime, objectToDestroy));
+    }
+
+
+    // Use IEnumerator interface when you want something to happen over several frames or at a later time. Perform the deactivate after the wait time.
+    // Effectively runs in parallel to the destroy method. 
+    private IEnumerator Wait(float waitTime, GameObject objectToDestroy)
+    {
+        yield return new WaitForSeconds(waitTime); // this method is frozen for for the given time. The game is not held up as the Wait coroutine is running in parallel                                                 // deactivate skid here
+
+        // wakes up here                                         
+        Destroy(objectToDestroy);
+        Debug.Log("object deactivated after " + (waitTime) + " seconds");
+    }
+
 
     // Use this for Unity initialization
     void Awake()
@@ -132,5 +153,8 @@ public class ObjectPool : MonoBehaviour {
         // Create a hashtable/Dictionary for active/nonactive objects
         activeCachedObjects = new Dictionary<GameObject, bool>();
     }
+
+
+  
 
 }
