@@ -44,8 +44,8 @@ public class ObjectPool : MonoBehaviour {
         // Instantiate the objects in the array and set them to be inactive
         for (var i = 0; i < poolSize; i++)
         {
-                objects[i] = Instantiate(prefab) as GameObject;
-                objects[i].name = objects[i].name + i; // rename object based on position in the cache
+            objects[i] = Instantiate(prefab) as GameObject;
+            objects[i].name = objects[i].name + i; // rename object based on position in the cache
             objects[i].SetActive(false);
             activeCachedObjects.Add(objects[i], false); //set key objects in the dictionary to the false value
                 

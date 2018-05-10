@@ -8,7 +8,7 @@ public class TriggerSkid : MonoBehaviour {
     public float timeOfSkid = 2.0f;
     private float startTime;
     private CarController skiddingCar;
-    public Listener onSkid, offSkid;  // listeners ( user interface and sound )
+    public Listener [] listeners;  // listeners ( user interface and sound )
 
     public void OnTriggerEnter(Collider obj)
     {
@@ -33,7 +33,8 @@ public class TriggerSkid : MonoBehaviour {
     // Effectively runs in parallel to OnTriggerEnter. 
     private IEnumerator Wait(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime); // this method is frozen for for the given time                                                 // deactivate skid here
+        yield return new WaitForSeconds(waitTime); // this method is frozen for for the given time                                                 
+        // deactivate skid here
        // offSkid.Send(this); // listener- off skid
         Debug.Log("skid deactivated after " + (Time.time - startTime) + " seconds");
     }
