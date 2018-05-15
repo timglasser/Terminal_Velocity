@@ -151,14 +151,6 @@ namespace UnityStandardAssets.Vehicles.Car
             steering = Mathf.Clamp(steering, -1, 1);
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
             BrakeInput = footbrake = -1*Mathf.Clamp(footbrake, -1, 0);
-            if (BrakeInput > 0)                                         //added This activates the brake lights.
-            {
-                GetComponentInChildren<brakeLights>().IsBraking(true);  //added
-            }
-            else
-            {
-                GetComponentInChildren<brakeLights>().IsBraking(false); //added
-            }
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
             //Set the steer on the front wheels.
