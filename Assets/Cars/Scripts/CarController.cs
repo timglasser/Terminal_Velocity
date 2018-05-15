@@ -41,8 +41,8 @@ namespace UnityStandardAssets.Vehicles.Car
         private Vector3 m_Prevpos, m_Pos;
         private float m_SteerAngle;
         private int m_GearNum;
-        private float currTime = 0f;
-        private float trigTime = 1f;
+   //     private float currTime = 0f;
+  //      private float trigTime = 1f;
         private bool helperDisabled = false;
         private bool oilHit = false;
         private float m_GearFactor;
@@ -151,6 +151,14 @@ namespace UnityStandardAssets.Vehicles.Car
             steering = Mathf.Clamp(steering, -1, 1);
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
             BrakeInput = footbrake = -1*Mathf.Clamp(footbrake, -1, 0);
+            if (BrakeInput > 0)                                         //added This activates the brake lights.
+            {
+                GetComponentInChildren<brakeLights>().IsBraking(true);  //added
+            }
+            else
+            {
+                GetComponentInChildren<brakeLights>().IsBraking(false); //added
+            }
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
             //Set the steer on the front wheels.
@@ -374,8 +382,11 @@ namespace UnityStandardAssets.Vehicles.Car
             return false;
         }
 
+
+        // polluting the namespace ! Trigger should be activated from the static object
         private void Update()
         {
+            /*
             currTime += Time.deltaTime;
 
             if(oilHit == true && helperDisabled == false)
@@ -388,38 +399,39 @@ namespace UnityStandardAssets.Vehicles.Car
             {
                 enableHelper();
             }
-            
+            */
         }
+        /*
+                public void OnCollisionEnter(Collision col)
+                {
+                    Debug.Log(col.gameObject.tag);
+                    if (col.gameObject.tag == "Oil Slick")
+                    {
+                        oilHit = true; // flags are bad
+                    }
+                }
 
-        public void OnCollisionEnter(Collision col)
-        {
-            Debug.Log(col.gameObject.tag);
-            if (col.gameObject.tag == "Oil Slick")
-            {
-                oilHit = true;
-            }
-        }
-
-        public void OnTriggerEnter(Collider obj)
-        {
-            Debug.Log(obj.tag);
-            if (obj.gameObject.tag == "Oil Slick")
-            {
-                oilHit = true;
-            }
-        }
-
-
-        private void disableHelper()
+                public void OnTriggerEnter(Collider obj)
+                {
+                    Debug.Log(obj.tag); // this should be col.gameObject.tag
+                    if (obj.gameObject.tag == "Oil Slick")
+                    {
+                        oilHit = true;
+                    }
+                }
+                // end of the pollution
+        */
+        // these should be public methods so skid can be triggered as listener of the oil slick
+        private void onDisableHelper() // usually put "on" in front of event listener methods
         {
             m_SteerHelper = 0;
-            helperDisabled = true;
+       //     helperDisabled = true; // flags are bad
         }
 
-        private void enableHelper()
+        private void onEnableHelper()
         {
             m_SteerHelper = 0.644f;
-            helperDisabled = false;
+         //   helperDisabled = false; // flags are bad
         }
     }
 }
