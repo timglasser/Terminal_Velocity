@@ -98,7 +98,7 @@ public class RaceInfo : MonoBehaviour {
         raceOrder.Sort((x, y) => y.ProgressDistance.CompareTo(x.ProgressDistance));
     }
 
-    // Update is called once per frame
+    // If the participant has not made progress it must be going the wrong way
     void Update () {
         currRaceTime += Time.deltaTime;// Time is a singleton
         int i = 0;
