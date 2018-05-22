@@ -414,13 +414,13 @@ namespace UnityStandardAssets.Vehicles.Car
                 // end of the pollution
         */
         // these should be public methods so skid can be triggered as listener of the oil slick
-        public void onDisableHelper() // usually put "on" in front of event listener methods
+        private void onDisableHelper() // usually put "on" in front of event listener methods
         {
             m_SteerHelper = 0;
        //     helperDisabled = true; // flags are bad
         }
 
-        public void onEnableHelper()
+        private void onEnableHelper()
         {
             m_SteerHelper = 0.644f;
          //   helperDisabled = false; // flags are bad
