@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: 65e77dbb2f2454747961c8ff763404e9
+labels:
+- Car
+- Sports
+- Vehicle
+- Race
+- Racer
+- Lowpoly
+- Lod
+- Hardsurface
+- Wheels
+- Auto
+- Automobile
+- Game
+- Mobile
+- Ride
+- Chase
+- Run
+- Fast
+- Interior
+timeCreated: 18446744011573954816
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Body_22_Pagani_Zonda
+    100002: //RootNode
+    100004: Glass_22_Pagani_Zonda
+    100006: Matte_22_Pagani_Zonda
+    100008: Taillights_22_Pagani_Zonda
+    100010: Wheel_Back
+    100012: Wheel_L
+    100014: Wheel_R
+    100016: Body_22
+    100018: Glass_22
+    100020: Matte_22
+    100022: Ref_22
+    100024: Taillights_22
+    100026: Wheel_22_BL
+    100028: Wheel_22_BR
+    100030: Wheel_22_L
+    100032: Wheel_22_R
+    100034: break_L
+    100036: break_R
+    100038: Glass_light
+    100040: Wheel_Back_L
+    100042: Wheel_Back_R
+    400000: Body_22_Pagani_Zonda
+    400002: //RootNode
+    400004: Glass_22_Pagani_Zonda
+    400006: Matte_22_Pagani_Zonda
+    400008: Taillights_22_Pagani_Zonda
+    400010: Wheel_Back
+    400012: Wheel_L
+    400014: Wheel_R
+    400016: Body_22
+    400018: Glass_22
+    400020: Matte_22
+    400022: Ref_22
+    400024: Taillights_22
+    400026: Wheel_22_BL
+    400028: Wheel_22_BR
+    400030: Wheel_22_L
+    400032: Wheel_22_R
+    400034: break_L
+    400036: break_R
+    400038: Glass_light
+    400040: Wheel_Back_L
+    400042: Wheel_Back_R
+    2300000: Body_22_Pagani_Zonda
+    2300002: Glass_22_Pagani_Zonda
+    2300004: Matte_22_Pagani_Zonda
+    2300006: Taillights_22_Pagani_Zonda
+    2300008: Wheel_Back
+    2300010: Wheel_L
+    2300012: Wheel_R
+    2300014: Body_22
+    2300016: Glass_22
+    2300018: Matte_22
+    2300020: Ref_22
+    2300022: Taillights_22
+    2300024: Wheel_22_BL
+    2300026: Wheel_22_BR
+    2300028: Wheel_22_L
+    2300030: Wheel_22_R
+    2300032: break_L
+    2300034: break_R
+    2300036: Glass_light
+    2300038: Wheel_Back_L
+    2300040: Wheel_Back_R
+    3300000: Body_22_Pagani_Zonda
+    3300002: Glass_22_Pagani_Zonda
+    3300004: Matte_22_Pagani_Zonda
+    3300006: Taillights_22_Pagani_Zonda
+    3300008: Wheel_Back
+    3300010: Wheel_L
+    3300012: Wheel_R
+    3300014: Body_22
+    3300016: Glass_22
+    3300018: Matte_22
+    3300020: Ref_22
+    3300022: Taillights_22
+    3300024: Wheel_22_BL
+    3300026: Wheel_22_BR
+    3300028: Wheel_22_L
+    3300030: Wheel_22_R
+    3300032: break_L
+    3300034: break_R
+    3300036: Glass_light
+    3300038: Wheel_Back_L
+    3300040: Wheel_Back_R
+    4300000: Body_22_Pagani_Zonda
+    4300002: Matte_22_Pagani_Zonda
+    4300004: Taillights_22_Pagani_Zonda
+    4300006: Glass_22_Pagani_Zonda
+    4300008: Wheel_L
+    4300010: Wheel_Back
+    4300012: Wheel_R
+    4300014: Ref_22
+    4300016: Wheel_22_BL
+    4300018: Body_22
+    4300020: Matte_22
+    4300022: Glass_22
+    4300024: Wheel_22_R
+    4300026: Taillights_22
+    4300028: Wheel_22_BR
+    4300030: Wheel_22_L
+    4300032: Glass_light
+    4300034: Wheel_Back_R
+    4300036: Wheel_Back_L
+    4300038: break_R
+    4300040: break_L
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

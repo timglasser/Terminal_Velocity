@@ -35,7 +35,9 @@ using UnityEngine;
 
         [SerializeField]
         private float pointToPointThreshold = 4;
-        // proximity to waypoint which must be reached to switch target to next waypoint : only used in PointToPoint mode.
+    // proximity to waypoint which must be reached to switch target to next waypoint : only used in PointToPoint mode.
+
+        private float raceLength; 
 
         public enum ProgressStyle
         {
@@ -47,6 +49,15 @@ using UnityEngine;
         public WaypointCircuit.RoutePoint targetPoint { get; private set; }
         public WaypointCircuit.RoutePoint speedPoint { get; private set; }
         public WaypointCircuit.RoutePoint progressPoint { get; private set; }
+   
+        // example of c# built accessor methods
+        public float ProgressDistance
+        {
+            get { return progressDistance; }
+            private set { progressDistance = value; }
+        }
+
+
 
         public Transform target;
 
@@ -54,7 +65,7 @@ using UnityEngine;
         private int progressNum; // the current waypoint number, used in point-to-point mode.
         private Vector3 lastPosition; // Used to calculate current speed (since we may not have a rigidbody component)
         private float speed; // current speed of this object (calculated from delta since last frame)
-
+   
         // setup script properties
         private void Start()
         {
@@ -113,6 +124,10 @@ using UnityEngine;
                 if (Vector3.Dot(progressDelta, progressPoint.direction) < 0)
                 {
                     progressDistance += progressDelta.magnitude * 0.5f;
+                }
+                else
+                {
+                    // wrong way?
                 }
 
                 lastPosition = transform.position;
