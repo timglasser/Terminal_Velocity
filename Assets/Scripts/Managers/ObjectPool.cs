@@ -30,8 +30,6 @@ public class ObjectPool : MonoBehaviour {
     [SerializeField]
     protected GameObject prefab;
     [SerializeField]
-    protected GameObject AnoutherPrefab;
-    [SerializeField]
     private int poolSize = 10;
     //  where the objects are pooled and stored
     [SerializeField]

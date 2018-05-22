@@ -45,7 +45,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_AvoidPathOffset;          // direction (-1 or 1) in which to offset path to avoid other car, whilst avoiding
         private Rigidbody m_Rigidbody;
         public bool crashed;
-        private float crashedTime = 0.0f;
+        public float crashedTime = 0.0f;
         Vector3 RandomStopCheckPos;
         float randomStopTime = 5.0f;
 
