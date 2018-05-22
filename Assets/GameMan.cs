@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameMan : MonoBehaviour {
 
     public static GameMan GameInstance;
-    public Transform[] CarTransSpawn = new Transform[7];
+    public GameObject[] CarTransSpawn = new GameObject[7];
+    public GameObject[] tempSpawn = new GameObject[7];
     // Use this for initialization
 	void Awake ()
     {
@@ -13,12 +14,26 @@ public class GameMan : MonoBehaviour {
     }
     private void Start()
     {
+        //InitializeAttractScreen();
         InitializeGame();
+        for (int i = 0; i < 7; i++)
+        {
+            tempSpawn[i] = CarTransSpawn[i];
+        }
     }
 
     public static void Pause()
     {
 
+    }
+
+    public void Respawn()
+    {
+        for (int i =0; i < 7; i++)
+        {
+            CarTransSpawn[i] = tempSpawn[i];
+        }
+        Debug.Log("Button Pressed");
     }
     public static void InitializeAttractScreen()
     {

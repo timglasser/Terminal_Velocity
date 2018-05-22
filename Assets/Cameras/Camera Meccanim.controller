@@ -13,19 +13,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Glamour Camera Cycle
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Player Cameras
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -811,12 +811,13 @@ AnimatorStateMachine:
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107364213499973544}
-    m_Position: {x: 192, y: 216, z: 0}
+    m_Position: {x: 360, y: 228, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107903979495021920}
-    m_Position: {x: 192, y: -24, z: 0}
+    m_Position: {x: 360, y: 84, z: 0}
   m_AnyStateTransitions: []
-  m_EntryTransitions: []
+  m_EntryTransitions:
+  - {fileID: 1109899934735897712}
   m_StateMachineTransitions:
   - first: {fileID: 1107364213499973544}
     second:
@@ -828,10 +829,10 @@ AnimatorStateMachine:
     - {fileID: 1109363633291277468}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -108, y: -24, z: 0}
-  m_EntryPosition: {x: -144, y: 216, z: 0}
+  m_EntryPosition: {x: -120, y: 228, z: 0}
   m_ExitPosition: {x: 660, y: 96, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102990171831690518}
+  m_DefaultState: {fileID: 1102601434345927932}
 --- !u!1107 &1107903979495021920
 AnimatorStateMachine:
   serializedVersion: 5
@@ -887,6 +888,22 @@ AnimatorTransition:
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 1
+  serializedVersion: 1
+--- !u!1109 &1109899934735897712
+AnimatorTransition:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: Current Cameras
+    m_EventTreshold: 1
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1102601434345927932}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
   serializedVersion: 1
 --- !u!1109 &1109920664596224440
 AnimatorTransition:
