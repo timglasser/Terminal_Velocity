@@ -47,8 +47,7 @@ public class ObjectPool : MonoBehaviour {
             objects[i] = Instantiate(prefab) as GameObject;
             objects[i].name = objects[i].name + i; // rename object based on position in the cache
             objects[i].SetActive(false);
-            activeCachedObjects.Add(objects[i], false); //set key objects in the dictionary to the false value
-                
+            activeCachedObjects.Add(objects[i], false); //set key objects in the dictionary to the false value    
         }
     }
 

@@ -15,7 +15,7 @@ public class PlayerCams : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
-    {
+    {/*
         if (Input.GetKeyDown(KeyCode.C))
         {
             CameraMan.PlayerCamChange();
@@ -40,6 +40,7 @@ public class PlayerCams : MonoBehaviour {
             CameraMan.CamInstance.PlayerCams = CameraMan.CamInstance.RearTemp;
             tempChanged = false;
         }
+        */
 
     }
 }

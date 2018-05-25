@@ -21,9 +21,11 @@ public class RaceInfo : MonoBehaviour {
     // demonstrate a singleton pattern for the raceinfo
     // never make public just to show in the inspector
     [SerializeField]
-    private static RaceInfo Instance;
+    public static RaceInfo Instance;
   
     public GameObject[] participants ;
+
+    public GameObject[] players;
 
     // we need a list data structure. we are going to order the racers based on their progress along the track
     private static List<WaypointProgressTracker> humanparticipants = new List<WaypointProgressTracker>();
@@ -55,7 +57,7 @@ public class RaceInfo : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        onRaceStart();
+       // onRaceStart();
     }
 
     // reset event at the strt of a race
@@ -117,6 +119,6 @@ public class RaceInfo : MonoBehaviour {
             prevProgress[i] = participant.ProgressDistance;
             i++;
         }
-        Debug.Log("car " + raceOrder[0].gameObject.name + " progress is " + raceOrder[0].ProgressDistance);
+   //     Debug.Log("car " + raceOrder[0].gameObject.name + " progress is " + raceOrder[0].ProgressDistance);
     }
 }

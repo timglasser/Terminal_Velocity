@@ -70,13 +70,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cameras:
-  - {fileID: 1111741015155334, guid: cd065532ecba44f4facad228dcd9c377, type: 2}
-  - {fileID: 1935076918145418, guid: 8ceb9bd5ad268c94084535c59b7c33bc, type: 2}
-  - {fileID: 1578045182838176, guid: e2baebe359352ce41a74e80070f3e5b1, type: 2}
-  - {fileID: 1456600756351960, guid: 9033ab7e30a4b764a9c441c7a5bb8d1b, type: 2}
-  - {fileID: 1035331203452706, guid: d4b3f2ecfd06d4040a91aac0424ed852, type: 2}
-  - {fileID: 1226465877353798, guid: fc79b48eb77abf646b609fd80d8add33, type: 2}
-  - {fileID: 1614904104937356, guid: f31b8650cbe5cd2438f2cda086b7e3b2, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   tempInt: 0
   CurrentCamerasPar: 0
   PlayerCams: 0

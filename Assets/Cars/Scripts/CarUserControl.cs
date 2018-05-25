@@ -16,13 +16,24 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car = GetComponent<CarController>();
         }
 
+
+        // added camera change input
         void Update()
         {
-            //Debug.Log("Regular: Input Car drive" + Time.deltaTime);
-            // pass the input to the car!
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+               // CameraMan.PlayerCamChange();
+            }
+          
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+              //  CameraMan.CamInstance.PlayerCams = CameraMan.CamInstance.RearTemp;
+               
+            }
 
-            //m_Car.Move(h, v, v, 0f);
         }
+
+        // add light control here
 
         void FixedUpdate()
         {
@@ -39,6 +50,8 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car.Move(h, v, v, 0.0f);
 #endif
         }
+
+
 
     }
 

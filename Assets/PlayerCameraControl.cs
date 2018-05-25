@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCameraControl : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        /*
         if (stateInfo.IsName("TP") == true)
         {
             animator.GetComponentInParent<CameraMan>().Cameras[0].SetActive(true);
@@ -21,18 +22,20 @@ public class PlayerCameraControl : StateMachineBehaviour {
         {
             animator.GetComponentInParent<CameraMan>().Cameras[3].SetActive(true);
         }
+        */
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        animator.SetInteger("Player Cameras", animator.GetComponentInParent<CameraMan>().PlayerCams);
-        animator.SetInteger("Current Cameras", animator.GetComponentInParent<CameraMan>().CurrentCamerasPar);
+ //       animator.SetInteger("Player Cameras", animator.GetComponentInParent<CameraMan>().PlayerCams);
+  //      animator.SetInteger("Current Cameras", animator.GetComponentInParent<CameraMan>().CurrentCamerasPar);
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        /*
         if (stateInfo.IsName("TP") == true)
         {
             animator.GetComponentInParent<CameraMan>().tempInt = 0;
@@ -54,6 +57,7 @@ public class PlayerCameraControl : StateMachineBehaviour {
             animator.GetComponentInParent<CameraMan>().tempInt = 3;
             animator.GetComponentInParent<CameraMan>().Cameras[animator.GetComponentInParent<CameraMan>().tempInt].SetActive(false);
         }
+        */
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlamourCameraCycling : StateMachineBehaviour {
+   
     int a =0;
     int tI;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+   // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+   
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+        /*
         if (stateInfo.IsName("Scenic") == true)
         {
             animator.GetComponentInParent<CameraMan>().Cameras[4].SetActive(true);
@@ -20,17 +23,21 @@ public class GlamourCameraCycling : StateMachineBehaviour {
         {
             animator.GetComponentInParent<CameraMan>().Cameras[6].SetActive(true);
         }
+        */
     }
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        /*
         a++;
         animator.SetInteger("Glamour Camera Cycle", a);
         animator.SetInteger("Current Cameras", animator.GetComponentInParent<CameraMan>().CurrentCamerasPar);
+        */
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        /*
         a = 0;
         animator.SetInteger("Glamour Camera Cycle", a);
         if (stateInfo.IsName("Scenic") == true)
@@ -53,6 +60,7 @@ public class GlamourCameraCycling : StateMachineBehaviour {
             animator.GetComponentInParent<CameraMan>().tempInt = 6;
             animator.GetComponentInParent<CameraMan>().Cameras[animator.GetComponentInParent<CameraMan>().tempInt].SetActive(false);
         }
+        */
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

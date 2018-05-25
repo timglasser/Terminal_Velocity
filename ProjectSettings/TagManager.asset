@@ -8,6 +8,7 @@ TagManager:
   - Rain
   - Tunnel
   - Oil Slick
+  - Canvas
   layers:
   - Default
   - TransparentFX
