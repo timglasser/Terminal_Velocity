@@ -48,11 +48,5 @@ namespace UnityStandardAssets.Vehicles.Car
             //   }
 
         }
-        public void Move(float steering, float accel, float footbrake, float handbrake)
-        {
-
-
-        }
-        
     }
 }

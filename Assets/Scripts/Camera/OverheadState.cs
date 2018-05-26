@@ -7,7 +7,7 @@ public class OverheadState : StateMachineBehaviour {
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         // set camera to overhead
-        // Transform _Locator = GameObject.FindWithTag("Player").transform;
+
         Transform[] UiObjects;
         GameObject canvas;
 
@@ -15,7 +15,6 @@ public class OverheadState : StateMachineBehaviour {
         Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(6);// above
         Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(0);// above
         Camera.main.GetComponent<CarCamera>().enabled = false;
-
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");// disable title 
 
@@ -46,7 +45,6 @@ public class OverheadState : StateMachineBehaviour {
                     break;
                
             }
-
         }
     }
 
