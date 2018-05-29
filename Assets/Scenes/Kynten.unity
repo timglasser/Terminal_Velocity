@@ -9012,6 +9012,10 @@ Prefab:
       propertyPath: m_Name
       value: DisableTerrain
       objectReference: {fileID: 0}
+    - target: {fileID: 13500000, guid: eacdf869dddcb40f0a2c19fa16e872c7, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eacdf869dddcb40f0a2c19fa16e872c7, type: 2}
   m_IsPrefabParent: 0
@@ -29065,12 +29069,12 @@ Prefab:
     - target: {fileID: 224073450580207816, guid: 8931b4fb255c92c439c30984763d2df4,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 464
+      value: 569
       objectReference: {fileID: 0}
     - target: {fileID: 224073450580207816, guid: 8931b4fb255c92c439c30984763d2df4,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 258
+      value: 263
       objectReference: {fileID: 0}
     - target: {fileID: 224073450580207816, guid: 8931b4fb255c92c439c30984763d2df4,
         type: 2}
