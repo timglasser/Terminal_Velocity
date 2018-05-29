@@ -22,7 +22,17 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-               // CameraMan.PlayerCamChange();
+                switch (CameraMan.Instance.inGameCameras)
+                {
+                    case 0:
+                        CameraMan.Instance.inGameCameras = 1;
+                        break;
+                    case 1:
+                        CameraMan.Instance.inGameCameras = 0;
+                        break;
+
+                }
+                //CameraMan.PlayerCamChange();
             }
           
             if (Input.GetKeyDown(KeyCode.R))

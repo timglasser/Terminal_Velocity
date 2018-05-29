@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraMan : MonoBehaviour
 {
     public static CameraMan Instance;
-    public GameObject [] CameraLocators = new GameObject[7];
-    public GameObject[] CameraLookAt = new GameObject[1];
+    public GameObject [] CameraLocators = new GameObject[10];
+    public GameObject[] CameraLookAt = new GameObject[2];
+
+    public int inGameCameras = 0 ;
 
     /*  public enum CameraEnum =
       // need to enum the camera locators
@@ -18,11 +20,16 @@ public class CameraMan : MonoBehaviour
 
     public Transform GetLookAt(int index)
     {
-        return CameraLookAt[0].transform;
+        return CameraLookAt[index].transform;
     }
     public Transform GetLocator(int index)
     {
         return CameraLocators[index].transform;
+    }
+
+    public int IGC()
+    {
+        return inGameCameras;
     }
 
     // Use this for initialization

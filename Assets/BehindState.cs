@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstPersonState : StateMachineBehaviour {
+public class BehindState : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(8);// above
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(9);// above
         Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(1);// above
 
         Camera.main.GetComponent<CarCamera>().enabled = false;
@@ -20,16 +20,16 @@ public class FirstPersonState : StateMachineBehaviour {
         switch (animator.GetInteger("InGameCameras"))
         {
             case 0:
-                animator.SetTrigger("Camera Up");
-                animator.ResetTrigger("Camera Down");
+                animator.SetTrigger("CameraUp");
+                animator.ResetTrigger("CameraDown");
                 break;
             case 1:
-                animator.SetTrigger("Camera Down");
-                animator.ResetTrigger("Camera Up");
+                animator.SetTrigger("CameraDown");
+                animator.ResetTrigger("CameraUp");
                 break;
             case 2:
-                animator.SetTrigger("Camera Down");
-                animator.ResetTrigger("Camera Up");
+                animator.SetTrigger("CameraDown");
+                animator.ResetTrigger("CameraUp");
                 break;
 
         }
