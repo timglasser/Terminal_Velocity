@@ -13528,7 +13528,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447156, guid: b3c66136f3b9f294a9f53afe6eaf4a9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 101.74
+      value: 102.1
       objectReference: {fileID: 0}
     - target: {fileID: 447156, guid: b3c66136f3b9f294a9f53afe6eaf4a9e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -17570,6 +17570,100 @@ Prefab:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 114481215432372888, guid: a749907406d1c08408bdc3c598f286a3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906400307346134, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_Name
+      value: Ferrari (Germany)
+      objectReference: {fileID: 0}
+    - target: {fileID: 23108996734719030, guid: a749907406d1c08408bdc3c598f286a3,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91154c3e9dbba7a448417e5e89093c7a, type: 2}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.0019402202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.0023874042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.0035978365
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0040794346
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.1811524
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.37885273
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.22100002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.27400002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640604105987478, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.41300002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.0026973495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.0080640605
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.001936557
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.0014301419
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.18188968
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.37306017
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.31100002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.92300004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853911026607294, guid: a749907406d1c08408bdc3c598f286a3, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.21900001
+      objectReference: {fileID: 0}
+    - target: {fileID: 23653421657166754, guid: a749907406d1c08408bdc3c598f286a3,
         type: 2}
       propertyPath: m_Enabled
       value: 1
@@ -27534,7 +27628,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 63a0643a890f502459706ef7065c62a3, type: 2}
+  - {fileID: 2100000, guid: b710ac589b1d91d44ba7553dd3490ada, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27774,7 +27868,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 63a0643a890f502459706ef7065c62a3, type: 2}
+  - {fileID: 2100000, guid: fc9cda73f45457a44bc41b7bf0b34e6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27858,7 +27952,7 @@ GameObject:
   - component: {fileID: 1194573736}
   - component: {fileID: 1194573741}
   m_Layer: 0
-  m_Name: Ferrari (9)
+  m_Name: Ferrari (Italia)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28600,7 +28694,7 @@ GameObject:
   - component: {fileID: 1381478302}
   - component: {fileID: 1381478307}
   m_Layer: 0
-  m_Name: Ferrari (10)
+  m_Name: Ferrari (Brazil)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31068,7 +31162,7 @@ GameObject:
   - component: {fileID: 1778839273}
   - component: {fileID: 1778839278}
   m_Layer: 0
-  m_Name: Ferrari (8)
+  m_Name: Ferrari (Mexico)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31187,8 +31281,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1778839272}
-  m_LocalRotation: {x: -0, y: 0.8934952, z: -0, w: 0.44907278}
-  m_LocalPosition: {x: 906.24, y: 103.6, z: 845.26}
+  m_LocalRotation: {x: -0.002551942, y: 0.8898882, z: 0.0025216986, w: 0.4561646}
+  m_LocalPosition: {x: 906.2472, y: 103.60367, z: 845.26624}
   m_LocalScale: {x: 1.7074202, y: 1.7074202, z: 1.7074202}
   m_Children:
   - {fileID: 1137817397}
@@ -31209,7 +31303,7 @@ Transform:
   - {fileID: 862070554}
   m_Father: {fileID: 0}
   m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 126.632, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.39100003, y: 125.72001, z: -0.128}
 --- !u!114 &1778839278
 MonoBehaviour:
   m_ObjectHideFlags: 0
