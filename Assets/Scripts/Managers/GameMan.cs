@@ -89,5 +89,29 @@ public class GameMan : MonoBehaviour {
         // set the start trigger in the FSM
         Animator anim = GetComponentInChildren<Animator>(); // the game state machine is in the camera child
         anim.SetTrigger("GameOver");
+
+
+        //Set the ending credits to scroll up through the ending scene
+        GameObject canvas;
+        canvas = GameObject.FindGameObjectWithTag("Canvas");// disable title 
+        Transform[] UiObjects;
+        // enable game widgets
+        UiObjects = canvas.GetComponentsInChildren<Transform>(true);
+
+        foreach (Transform ui in UiObjects)
+        {
+            // Debug.Log("ui element is " + ui.name);
+
+            string name = ui.name;
+            switch (name)
+            {
+                case "CreditsBackground":
+                    ui.gameObject.SetActive(false);
+                    break;
+                case "Credits Scroller":
+                    ui.gameObject.SetActive(true);
+                    break;
+            }
+        }
     }
 }

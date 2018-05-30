@@ -39,6 +39,9 @@ public class ReadyState : StateMachineBehaviour {
                 case "Ready":
                     ui.gameObject.SetActive(true);
                     break;
+                case "Credits Scroller":
+                    ui.gameObject.SetActive(false);
+                    break;
             }
 
         }
