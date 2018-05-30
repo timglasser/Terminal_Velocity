@@ -9,6 +9,7 @@ TagManager:
   - Tunnel
   - Oil Slick
   - Canvas
+  - ReadyObject
   layers:
   - Default
   - TransparentFX

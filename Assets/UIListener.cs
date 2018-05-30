@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIListener : MonoBehaviour
 {
+    
 
     //Make sure to attach these Buttons in the Inspector
     public Button m_YourButton, m_YourSecondButton;
@@ -20,11 +21,16 @@ public class UIListener : MonoBehaviour
 
     void TaskOnClick()
     {
+
+
         //Output this to console when the Button is clicked
         Debug.Log("You have clicked the button!");
         // set the start trigger in the FSM
+
         Animator anim = GetComponentInChildren<Animator>(); // the game state machine is in the camera child
         anim.SetTrigger("MouseDown");
+        
+
     }
 
     void TaskWithParameters(string message)

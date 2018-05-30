@@ -4,11 +4,52 @@ using UnityEngine;
 
 public class SetState : StateMachineBehaviour {
 
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        GameObject canvas;
+        canvas = GameObject.FindGameObjectWithTag("Canvas");// disable title 
+        Transform[] UiObjects;
+        // enable game widgets
+        UiObjects = canvas.GetComponentsInChildren<Transform>(true);
 
+
+        foreach (Transform ui in UiObjects)
+        {
+            //Debug.Log("ui element is " + ui.name);
+
+            string name = ui.name;
+            switch (name)
+            {
+                case "Title":
+                    ui.gameObject.SetActive(false);
+                    break;
+                case "Start Button":
+                    ui.gameObject.SetActive(false);
+                    break;
+                case "Text":
+                    ui.gameObject.SetActive(false);
+                    break;
+                case "MiniMapCamera":
+                    ui.gameObject.SetActive(true);
+                    break;
+                case "Speedometer":
+                    ui.gameObject.SetActive(true);
+                    break;
+                case "Ready":
+                    ui.gameObject.SetActive(false);
+                    break;
+                case "Set":
+                    ui.gameObject.SetActive(true);
+                    break;
+            }
+
+        }
+        //GameMan.Reset();
+
+    
+
+    }
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//

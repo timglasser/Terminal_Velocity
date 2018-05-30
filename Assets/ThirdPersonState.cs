@@ -6,9 +6,29 @@ public class ThirdPersonState : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        // set up the camera constraints
-        // Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(6);// above
-        //  Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(0);// above
+
+        GameObject canvas;
+        canvas = GameObject.FindGameObjectWithTag("Canvas");// disable title 
+        Transform[] UiObjects;
+        // enable game widgets
+        UiObjects = canvas.GetComponentsInChildren<Transform>(true);
+
+
+        foreach (Transform ui in UiObjects)
+        {
+            // Debug.Log("ui element is " + ui.name);
+
+            string name = ui.name;
+            switch (name)
+            {
+                case "GO":
+                    ui.gameObject.SetActive(false);
+                    break;
+            }
+        }
+                    // set up the camera constraints
+                    // Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(6);// above
+                    //  Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(0);// above
         Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(7);// above
         Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(1);// above
 

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OverheadState : StateMachineBehaviour {
+    
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         // set camera to overhead
 
+       
         Transform[] UiObjects;
         GameObject canvas;
 
@@ -23,7 +25,7 @@ public class OverheadState : StateMachineBehaviour {
 
         foreach (Transform ui in UiObjects)
         {
-            Debug.Log("ui element is " + ui.name);
+            //Debug.Log("ui element is " + ui.name);
 
             string name = ui.name;
             switch (name)
@@ -50,7 +52,7 @@ public class OverheadState : StateMachineBehaviour {
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
+     //   
 	//}
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state

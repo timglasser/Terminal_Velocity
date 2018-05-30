@@ -68,8 +68,10 @@ public class GameMan : MonoBehaviour {
 
         for (int i =0; i < RaceInfo.RaceOrder.Length; i++)
         {
+
             // reset the waypoint progress tracker
             RaceInfo.RaceOrder[i].gameObject.GetComponent<WaypointProgressTracker>().Reset();
+
             //start position
 
             // might have to reset the rigid body here
