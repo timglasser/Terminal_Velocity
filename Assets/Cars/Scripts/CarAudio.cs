@@ -79,17 +79,15 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_HighDecel.Play();
             }
 
-            // skid clip setup
-        //    m_Skid = SetUpEngineAudioSource(skidSound);
 
             // crash clip setup
             m_CrashHigh = SetUpEngineAudioSource(m_CrashHigh);
             m_CrashLow = SetUpEngineAudioSource(m_CrashHigh);
          
-/*
+
             // music setup
-            //      m_BackgroundMusic = SetUpEngineAudioSource(BackgroundMusic);
-*/
+            m_BackgroundMusic = SetUpEngineAudioSource(m_BackgroundMusic);
+
             crashTime = Mathf.Max(m_CrashLow.clip.length, m_CrashHigh.clip.length);
 
             // flag that we have started the sounds playing
