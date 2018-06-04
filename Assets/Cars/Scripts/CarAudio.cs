@@ -194,8 +194,6 @@ namespace UnityStandardAssets.Vehicles.Car
         private AudioSource SetUpEngineAudioSource(AudioSource source)
         {
             // create the new audio source component on the game object and set up its properties
-          //  AudioSource source = gameObject.AddComponent<AudioSource>();
-            //source.clip = clip;
             source.volume = 1;
             source.loop = true;
 
