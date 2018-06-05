@@ -50,7 +50,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_CurrentTorque;
         private Rigidbody m_Rigidbody;
         private const float k_ReversingThreshold = 0.01f;
-        private int boostMeter = 0;
+        public int boostMeter = 0;
         
         
 
