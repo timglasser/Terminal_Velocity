@@ -50,6 +50,8 @@ namespace UnityStandardAssets.Vehicles.Car
         private float m_CurrentTorque;
         private Rigidbody m_Rigidbody;
         private const float k_ReversingThreshold = 0.01f;
+        private int boostMeter = 0;
+        
         
 
         public bool Skidding { get; private set; }
@@ -59,6 +61,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public float MaxSpeed{get { return m_Topspeed; }}
         public float Revs { get; private set; }
         public float AccelInput { get; private set; }
+        public int boostPerCube = 25;
       
 
         // Use this for initialization
@@ -414,16 +417,26 @@ namespace UnityStandardAssets.Vehicles.Car
                 // end of the pollution
         */
         // these should be public methods so skid can be triggered as listener of the oil slick
-        private void onDisableHelper() // usually put "on" in front of event listener methods
+        public void onDisableHelper() // usually put "on" in front of event listener methods
         {
             m_SteerHelper = 0;
        //     helperDisabled = true; // flags are bad
         }
 
-        private void onEnableHelper()
+        public void onEnableHelper()
         {
             m_SteerHelper = 0.644f;
          //   helperDisabled = false; // flags are bad
         }
+
+        public void addBoost()
+        {
+            if(boostMeter < 100)
+            {
+                boostMeter = boostMeter + boostPerCube;
+            }
+        }
+
+
     }
 }

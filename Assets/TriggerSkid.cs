@@ -24,6 +24,7 @@ public class TriggerSkid : MonoBehaviour {
                 // activate skid here (best to use a listener as we may need UI and sound update)
                 Debug.Log("skid activated on the " + skiddingCar.name);
                 //onSkid.Send(this); // listener- on skid
+                skiddingCar.onDisableHelper();
                 StartCoroutine(Wait(timeOfSkid));
             }
         }
@@ -34,8 +35,9 @@ public class TriggerSkid : MonoBehaviour {
     private IEnumerator Wait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime); // this method is frozen for for the given time                                                 
-        // deactivate skid here
-       // offSkid.Send(this); // listener- off skid
+                                                   // deactivate skid here
+                                                   // offSkid.Send(this); // listener- off skid
+        skiddingCar.onEnableHelper();
         Debug.Log("skid deactivated after " + (Time.time - startTime) + " seconds");
     }
 }
