@@ -105,10 +105,7 @@ public class GameMan : MonoBehaviour {
             string name = ui.name;
             switch (name)
             {
-                case "CreditsBackground":
-                    ui.gameObject.SetActive(false);
-                    break;
-                case "Credits Scroller":
+                case "Credits_Scroller":
                     ui.gameObject.SetActive(true);
                     break;
             }
