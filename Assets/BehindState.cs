@@ -6,34 +6,35 @@ public class BehindState : StateMachineBehaviour {
 
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(9);// above
+        Camera.main.GetComponent<ParentChildConstraint>().ConstrainTo = animator.GetComponentInParent<CameraMan>().GetLocator(7);// above
         Camera.main.GetComponent<LookAtConstraint>().LookAt = animator.GetComponentInParent<CameraMan>().GetLookAt(1);// above
 
         Camera.main.GetComponent<CarCamera>().enabled = false;
         Camera.main.GetComponent<LookAtConstraint>().enabled = false;
         Camera.main.GetComponent<ParentChildConstraint>().enabled = true;
+        animator.ResetTrigger("Camera Down");
     }
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        animator.SetInteger("InGameCameras", animator.GetComponentInParent<CameraMan>().IGC());
-        switch (animator.GetInteger("InGameCameras"))
-        {
-            case 0:
-                animator.SetTrigger("CameraUp");
-                animator.ResetTrigger("CameraDown");
-                break;
-            case 1:
-                animator.SetTrigger("CameraDown");
-                animator.ResetTrigger("CameraUp");
-                break;
-            case 2:
-                animator.SetTrigger("CameraDown");
-                animator.ResetTrigger("CameraUp");
-                break;
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //    animator.SetInteger("InGameCameras", animator.GetComponentInParent<CameraMan>().IGC());
+    //    switch (animator.GetInteger("InGameCameras"))
+    //    {
+    //        case 0:
+    //            animator.SetTrigger("CameraUp");
+    //            animator.ResetTrigger("CameraDown");
+    //            break;
+    //        case 1:
+    //            animator.SetTrigger("CameraDown");
+    //            animator.ResetTrigger("CameraUp");
+    //            break;
+    //        case 2:
+    //            animator.SetTrigger("CameraDown");
+    //            animator.ResetTrigger("CameraUp");
+    //            break;
 
-        }
-    }
+    //    }
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

@@ -45,7 +45,10 @@ public class OverheadState : StateMachineBehaviour {
                 case "Speedometer":
                     ui.gameObject.SetActive(false);
                     break;
-               
+                case "Tachometer":
+                    ui.gameObject.SetActive(false);
+                    break;
+
             }
         }
     }

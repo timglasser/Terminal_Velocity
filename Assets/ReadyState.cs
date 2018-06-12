@@ -36,6 +36,9 @@ public class ReadyState : StateMachineBehaviour {
                 case "Speedometer":
                     ui.gameObject.SetActive(true);
                     break;
+                case "Tachometer":
+                    ui.gameObject.SetActive(true);
+                    break;
                 case "Ready":
                     ui.gameObject.SetActive(true);
                     break;

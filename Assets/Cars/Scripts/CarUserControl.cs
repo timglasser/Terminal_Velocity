@@ -5,8 +5,10 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets.Vehicles.Car
 {
     [RequireComponent(typeof(CarController))]
+
     public class CarUserControl : MonoBehaviour
     {
+        public GameObject GameManager;
         private CarController m_Car; // the car controller we want to use
 
 
@@ -22,16 +24,8 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                switch (CameraMan.Instance.inGameCameras)
-                {
-                    case 0:
-                        CameraMan.Instance.inGameCameras = 1;
-                        break;
-                    case 1:
-                        CameraMan.Instance.inGameCameras = 0;
-                        break;
-
-                }
+                Animator anim = GameManager.GetComponentInChildren<Animator>();
+                anim.SetTrigger("CameraDown");
                 //CameraMan.PlayerCamChange();
             }
           

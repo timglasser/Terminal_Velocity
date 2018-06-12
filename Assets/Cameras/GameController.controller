@@ -13,49 +13,43 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: CameraDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: MouseDown
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: GameOver
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: PlayAgain
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: GameStart
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: CameraArrive
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: InGameCameras
-    m_Type: 3
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -354,9 +348,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: CameraDown
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
-    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102500477840333410}
   m_Solo: 0
@@ -426,9 +417,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: CameraUp
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102031915417263270}
   m_Solo: 0
@@ -472,11 +460,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: CameraDown
+    m_ConditionEvent: CameraUp
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
-    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102253968583340838}
   m_Solo: 0
@@ -544,10 +529,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: CameraUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
+    m_ConditionEvent: CameraDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102031915417263270}
@@ -592,11 +574,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: CameraDown
+    m_ConditionEvent: CameraUp
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
-    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102500477840333410}
   m_Solo: 0
@@ -666,9 +645,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: CameraDown
     m_EventTreshold: 0
-  - m_ConditionMode: 6
-    m_ConditionEvent: InGameCameras
-    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102253968583340838}
   m_Solo: 0
@@ -753,11 +729,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102058216878979512
 AnimatorState:
   serializedVersion: 5
@@ -779,11 +757,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102121840029771240
 AnimatorState:
   serializedVersion: 5
@@ -804,11 +784,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102238244774285340
 AnimatorState:
   serializedVersion: 5
@@ -830,11 +812,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102248196843441614
 AnimatorState:
   serializedVersion: 5
@@ -855,11 +839,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102253968583340838
 AnimatorState:
   serializedVersion: 5
@@ -882,11 +868,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102400944810716018
 AnimatorState:
   serializedVersion: 5
@@ -908,11 +896,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102443099122988712
 AnimatorState:
   serializedVersion: 5
@@ -934,11 +924,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102500477840333410
 AnimatorState:
   serializedVersion: 5
@@ -961,11 +953,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102548665660657870
 AnimatorState:
   serializedVersion: 5
@@ -986,11 +980,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102635947230958700
 AnimatorState:
   serializedVersion: 5
@@ -1011,11 +1007,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &1102660596804253248
 AnimatorState:
   serializedVersion: 5
@@ -1036,11 +1034,13 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
   m_Motion: {fileID: 0}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &1107067464864200528
 AnimatorStateMachine:
   serializedVersion: 5
@@ -1114,23 +1114,19 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: 1109416667171096034}
   m_StateMachineTransitions:
-    data:
-      first: {fileID: 1107904806458974934}
-      second:
-      - {fileID: 1109968809961913400}
-    data:
-      first: {fileID: 1107830048115884834}
-      second:
-      - {fileID: 1109417696849514828}
-    data:
-      first: {fileID: 1107067464864200528}
-      second:
-      - {fileID: 1109862244577748474}
-      - {fileID: 1109102589022955772}
-    data:
-      first: {fileID: 1107526702160583226}
-      second:
-      - {fileID: 1109455905002114068}
+  - first: {fileID: 1107067464864200528}
+    second:
+    - {fileID: 1109862244577748474}
+    - {fileID: 1109102589022955772}
+  - first: {fileID: 1107526702160583226}
+    second:
+    - {fileID: 1109455905002114068}
+  - first: {fileID: 1107830048115884834}
+    second:
+    - {fileID: 1109417696849514828}
+  - first: {fileID: 1107904806458974934}
+    second:
+    - {fileID: 1109968809961913400}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 36, y: 48, z: 0}
   m_EntryPosition: {x: 324, y: 72, z: 0}
